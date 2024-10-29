@@ -10,7 +10,7 @@
 class Map {
 public:
   Map();
-  void display();
+  void display() const;
 private:
   Room *first_room;
   Room *rooms[30];
