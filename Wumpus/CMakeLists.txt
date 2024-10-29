@@ -16,4 +16,5 @@ add_executable(Wumpus main.cpp
         Hazard.cpp
         Hazard.h
         Innards.cpp
+        Innards.h
 )

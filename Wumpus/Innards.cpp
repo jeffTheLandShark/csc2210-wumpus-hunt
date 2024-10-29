@@ -3,3 +3,9 @@
 //
 
 #include "Innards.h"
+Innards::Innards(char symbol) {
+  this->symbol = symbol;
+}
+char Innards::getSymbol() const {
+  return symbol;
+}

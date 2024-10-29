@@ -4,22 +4,27 @@
 
 #ifndef ROOM_H
 #define ROOM_H
-#include "Hazard.h"
-#include "Item.h"
+#include "Innards.h"
 
 
 class Room {
     public:
+    Room();
+    void setNorth(Room *room);
+    void setSouth(Room *room);
+    void setEast(Room *room);
+    void setWest(Room *room);
+    Room getNorth() const;
+    Room getSouth() const;
+    Room getEast() const;
+    Room getWest() const;
 private:
     Room *north;
     Room *east;
     Room *south;
     Room *west;
-    //only has item or hazard
-    Item *item;
-    Hazard *hazard;
+
+    Innards *innard;
 };
-
-
 
 #endif //ROOM_H
