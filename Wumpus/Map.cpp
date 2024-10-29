@@ -3,8 +3,11 @@
 //
 
 #include "Map.h"
+
+#include "Kracken.h"
+
 Map::Map() {
-  Room *rooms[30];
+  *rooms = new Room[30];
   for(auto & room : rooms) {
     room = new Room();
   }
@@ -24,8 +27,11 @@ Map::Map() {
   }
   first_room = rooms[0];
 
+  rooms[1]->setInnard(new Innards('@'));
 }
 
 void Map::display() {
-
+  for(int i = 0; i < 30; i++) {
+    if(rooms[i]->getInnard() == nullptr)
+  }
 }

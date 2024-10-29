@@ -18,6 +18,9 @@ class Room {
     Room getSouth() const;
     Room getEast() const;
     Room getWest() const;
+
+    void setInnard(Innards *innard);
+    Innards getInnard() const;
 private:
     Room *north;
     Room *east;

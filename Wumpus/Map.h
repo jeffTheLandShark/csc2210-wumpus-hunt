@@ -13,8 +13,7 @@ public:
   void display();
 private:
   Room *first_room;
+  Room *rooms[30];
 };
-
-
 
 #endif //MAP_H
