@@ -8,7 +8,7 @@ int main()
 }
 
 void help() {
-     cout << "You are a stranded scuba diver trapped on the ocean floor. "
+     cout << " a stranded scuba diver trapped on the ocean floor. "
              "You came down to the ocean floor with an oxygen tank with "
              "enough oxygen to last you 15 movements, but luckily there exist "
              "some weird force that can restore oxygen. To escape you must "
