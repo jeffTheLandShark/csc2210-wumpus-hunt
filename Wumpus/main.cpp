@@ -11,7 +11,19 @@ int main()
     setup();
     help();
     Map* map = new Map();
-    map->display();
+
+    cout << "\nAction: N)orth, S)outh, E)ast, W)est, M)ap, H)elp, Q)uit: ";
+    string input;
+    cin >> input;
+    while(input != "q" || input == "Q") {
+        cout << "Action: N)orth, S)outh, E)ast, W)est, M)ap, H)elp, Q)uit: ";
+        if(input == "h" || input == "H") {
+            help();
+        } else if(input == "m" || input == "M") {
+            map->display();
+        }
+        cin >> input;
+    }
     return 0;
 }
 
