@@ -48,6 +48,8 @@ void Map::display() const {
     rooms[i]->display();
     if(i % 6 == 5) {
       cout << endl;
+    } else {
+      cout << " ";
     }
   }
 }
