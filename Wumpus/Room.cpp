@@ -3,6 +3,9 @@
 //
 
 #include "Room.h"
+
+#include <iostream>
+
 Room::Room() {
   north = nullptr;
   south = nullptr;
@@ -37,7 +40,14 @@ Room Room::getWest() const {
 void Room::setInnard(Innards *innard) {
   this->innard = innard;
 }
-Innards Room::getInnard() const {
-  return *innard;
+Innards* Room::getInnard() const {
+  return &*innard;
 }
 
+void Room::display() const{
+  if(innard) {
+    innard->display();
+  } else {
+    std::cout << ".";
+  }
+}

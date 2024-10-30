@@ -45,7 +45,7 @@ Map::Map() {
 
 void Map::display() const {
   for(int i = 0; i < 30; i++) {
-    cout << rooms[i]->getInnard().getSymbol();
+    rooms[i]->display();
     if(i % 6 == 5) {
       cout << endl;
     }

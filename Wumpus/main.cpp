@@ -1,5 +1,7 @@
 #include <iostream>
 #include <windows.h>
+
+#include "Map.h"
 using namespace std;
 void help();
 void setup();
@@ -8,6 +10,8 @@ int main()
 {
     setup();
     help();
+    Map* map = new Map();
+    map->display();
     return 0;
 }
 

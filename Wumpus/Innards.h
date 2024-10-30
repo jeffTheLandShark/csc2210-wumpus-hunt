@@ -9,6 +9,7 @@ class Innards {
 public:
   Innards(char symbol);
   char getSymbol() const;
+  void display() const;
 private:
 char symbol;
 };
