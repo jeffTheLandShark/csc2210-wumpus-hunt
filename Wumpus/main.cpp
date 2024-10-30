@@ -6,12 +6,17 @@ using namespace std;
 void help();
 void setup();
 string toLowerCase(string str);
-int main()
-{
+int main() {
     setup();
     Map* map = new Map();
 
-    cout << "\nAction: N)orth, S)outh, E)ast, W)est, M)ap, H)elp, Q)uit: ";
+    cout << "\nAction: N)orth, S)outh, E)ast, W)est, M)ap, H)elp";
+    //todo
+    //if(player has net or harpoon){
+    //out statement of ha(R)poon
+    //out statement of ne(T)
+//}
+    cout << ", Q)uit: ";
     string input;
     cin >> input;
 

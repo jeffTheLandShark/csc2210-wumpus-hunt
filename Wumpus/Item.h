@@ -11,7 +11,13 @@
 class Item {
 
 };
+class Harpoon : public Item {
 
+};
+
+class Trident : public Item {
+
+};
 class AirTank : public Item {
 public:
 private:
