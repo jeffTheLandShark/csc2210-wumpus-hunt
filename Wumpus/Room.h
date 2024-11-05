@@ -19,6 +19,8 @@ class Room {
     Room getEast() const;
     Room getWest() const;
 
+    bool hasKraken() const;
+
     void setInnard(Innards *innard);
     Innards* getInnard() const;
     void display() const;
