@@ -6,7 +6,7 @@
 #ifndef ITEM_H
 #define ITEM_H
 
-#include "Player.h"
+#include "player.h"
 
 class Items {
 public:

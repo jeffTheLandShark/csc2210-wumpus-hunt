@@ -2,7 +2,7 @@
 // Created by deald on 10/27/2024.
 //
 
-#include "Innards.h"
+#include "innards.h"
 
 #include <iostream>
 #include <ostream>

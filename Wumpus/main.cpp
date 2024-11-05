@@ -8,7 +8,7 @@ void setup();
 string toLowerCase(string str);
 int main() {
     setup();
-    Map* map = new Map();
+    map* map = new map();
 
     cout << "\nAction: N)orth, S)outh, E)ast, W)est, M)ap, H)elp";
     //todo

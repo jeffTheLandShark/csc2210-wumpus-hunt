@@ -4,7 +4,7 @@
 
 #ifndef ROOM_H
 #define ROOM_H
-#include "Innards.h"
+#include "innards.h"
 
 
 class Room {

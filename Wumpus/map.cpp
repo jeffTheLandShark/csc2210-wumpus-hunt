@@ -2,11 +2,9 @@
 // Created by deald on 10/27/2024.
 //
 
-#include "Map.h"
-
+#include "map.h"
 #include <iostream>
-
-#include "Kracken.h"
+#include "kraken.h"
 using namespace std;
 
 Map::Map() {

@@ -10,10 +10,10 @@ constexpr int STARTING_AIR = 50;
 constexpr int STARTING_WEAPONS = 1;
 
 
-class Player {
+class player {
 public:
-  Player();
-  ~Player();
+  player();
+  ~player();
 
   int getAir() const;
   int getNets() const;
@@ -21,13 +21,14 @@ public:
   void addAir(int tankAir);
   void addNet();
   void addHarpoon();
-  Room *getRoom() const;
+  void setRoom(room* room);
+  room* getRoom() const;
 
 private:
   int air = STARTING_AIR;
   int numNets = STARTING_WEAPONS;
   int numHarpoons = STARTING_WEAPONS;
-  Room location;
+  room* location;
 
 };
 
