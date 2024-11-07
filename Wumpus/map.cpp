@@ -60,7 +60,7 @@ Map::Map(Player *player) {
   while(random_room->getInnard()->getSymbol() != '.') {
     random_room = get_random_room();
   }
-  random_room->setInnard(player);
+  player->setRoom(random_room);
 }
 void Map::display() const {
   for(int i = 0; i < 30; i++) {
