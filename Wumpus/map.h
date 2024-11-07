@@ -12,10 +12,10 @@ class Map {
 public:
   Map(Player *player);
   void display() const;
+  Room *get_random_room() const;
 private:
   Room *first_room;
   Room *rooms[30];
-  Room *get_random_room() const;
 };
 
 #endif //MAP_H
