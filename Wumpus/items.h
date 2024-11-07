@@ -7,12 +7,13 @@
 #define ITEM_H
 
 #include "player.h"
+#include "innards.h"
 
 
-class Items {
+class Items : public Innards {
 public:
+  Items(char symbol) : Innards(symbol) {}
   virtual ~Items() = default;
-
   virtual void pickup(Player player);
 
 private:
@@ -21,7 +22,8 @@ private:
 
 class AirTank : public Items {
 public:
-  AirTank(int air) : air(air) {}
+  AirTank() : AirTank(5) {}
+  AirTank(int air) : Items('?'), air(air) {}
   void pickup(Player player) override;
 
 private:
@@ -30,6 +32,7 @@ private:
 
 class Weapon : public Items {
 public:
+  Weapon() : Items('>') {}
   virtual bool use(Player player, char direction);
 };
 
