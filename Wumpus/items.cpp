@@ -4,11 +4,9 @@
  */
 
 #include "items.h"
-
+#include "player.h"
 
 #include <iostream>
-
-#include "Room.h"
 
 void AirTank::pickup(Player player) {
   player.addAir(air);
