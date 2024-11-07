@@ -10,4 +10,5 @@ add_executable(Wumpus main.cpp
         hazard.cpp
         innards.cpp
         player.cpp
+        items.cpp
 )
