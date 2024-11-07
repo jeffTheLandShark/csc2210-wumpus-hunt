@@ -7,11 +7,13 @@
 
 class Innards {
 public:
-  Innards(char symbol);
-  char getSymbol() const;
+  Innards() : Innards('.') {}
+  Innards(char symbol) : symbol(symbol) {}
   void display() const;
-private:
-char symbol;
+  void trigger() const;
+
+protected:
+  char symbol;
 };
 
 #endif //INNARDS_H

@@ -3,3 +3,7 @@
 //
 
 #include "hazard.h"
+
+void Riptide::trigger(Player player) {
+
+}
