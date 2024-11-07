@@ -6,7 +6,6 @@
 #define ROOM_H
 #include "innards.h"
 
-
 class Room {
     public:
     Room();
