@@ -11,6 +11,7 @@ public:
   Innards(char symbol) : symbol(symbol) {}
   void display() const;
   void trigger() const;
+  char getSymbol() const;
 
 protected:
   char symbol;
