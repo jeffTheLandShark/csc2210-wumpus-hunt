@@ -4,7 +4,7 @@
 
 #ifndef PLAYER_H
 #define PLAYER_H
-#include "Room.h"
+#include "room.h"
 
 constexpr int STARTING_AIR = 50;
 constexpr int STARTING_WEAPONS = 1;
@@ -22,13 +22,13 @@ public:
   void addNet();
   void addHarpoon();
   void setRoom(Room* room);
-  Room *getRoom() const;
-
+  Room* getRoom() const;
+  bool playerMove(char dir);
 private:
   int air = STARTING_AIR;
   int numNets = STARTING_WEAPONS;
   int numHarpoons = STARTING_WEAPONS;
-  Room *location;
+  Room* location;
 
 };
 
