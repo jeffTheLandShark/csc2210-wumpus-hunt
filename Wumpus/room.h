@@ -7,7 +7,7 @@
 #include "innards.h"
 
 class Room {
-    public:
+public:
     Room();
     void setNorth(Room *room);
     void setSouth(Room *room);
