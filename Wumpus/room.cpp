@@ -65,3 +65,7 @@ void Room::display() const {
     std::cout << ".";
   }
 }
+
+bool Room::isEdge() const {
+  return !(north && south && east && west);
+}

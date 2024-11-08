@@ -5,12 +5,14 @@
 #ifndef MAP_H
 #define MAP_H
 
+#include "player.h"
 #include "Room.h"
 
 class Map {
 public:
-  Map();
+  Map(Player *player);
   void display() const;
+  Room *get_random_room() const;
 private:
   Room *first_room;
   Room *rooms[30];

@@ -7,6 +7,10 @@
 #include <iostream>
 #include <ostream>
 
+char Innards::getSymbol() const {
+  return symbol;
+}
+
 void Innards::display() const {
   std::cout << symbol;
 }

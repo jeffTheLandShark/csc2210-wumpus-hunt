@@ -6,7 +6,6 @@
 #define ROOM_H
 #include "innards.h"
 
-
 class Room {
     public:
     Room();
@@ -24,6 +23,7 @@ class Room {
     void setInnard(Innards *innard);
     Innards* getInnard() const;
     void display() const;
+    bool isEdge() const;
 private:
     Room *north;
     Room *east;
