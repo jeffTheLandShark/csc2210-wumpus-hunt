@@ -72,12 +72,14 @@ void Player::useItem(char letter, char direction) {
     switch (letter) {
         case 'h':
             if(numHarpoons>0) {
-
+                Harpoon harpoon;
+                harpoon.use(*this, direction);
             }
             break;
         case 'n':
             if(numNets>0) {
-
+                Net net;
+                net.use(*this, direction);
             }
             break;
     }
