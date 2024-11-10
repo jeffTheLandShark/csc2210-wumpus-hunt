@@ -3,7 +3,7 @@
 //
 #include "room.h"
 #include "player.h"
-
+#include "map.h"
 #include <iostream>
 using namespace std;
 
@@ -79,20 +79,28 @@ void Player::playerMove(char dir) {
     }
 }
 
-void Player::useItem(char letter, char direction) {
+void Player::useItem(Map& map, char letter, char direction) {
+    bool hit;
     switch (letter) {
         case 'h':
             if(numHarpoons>0) {
                 Harpoon harpoon;
-                harpoon.use(*this, direction);
+                hit = harpoon.use(*this, direction);
+                map.set_game_over(hit);
+                map.set_win(hit);
             }
             break;
         case 't':
             if(numNets>0) {
                 Net net;
-                net.use(*this, direction);
+                hit = net.use(*this, direction);
+                if(hit == true) {
+                    cout << "The kraken was in the " << direction << " direction" <<endl;
+                }
             }
             break;
+        default:
+            cout << "Unknown weapon" << endl;
     }
 }
 void Player::printNear() const {

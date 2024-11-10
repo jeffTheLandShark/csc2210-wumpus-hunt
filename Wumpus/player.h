@@ -25,7 +25,7 @@ public:
   void setRoom(Room* room);
   Room* getRoom() const;
   void playerMove(char dir);
-  void useItem(char letter, char direction);
+  void useItem(Map& map, char letter, char direction);
 
   void printNear() const;
 
