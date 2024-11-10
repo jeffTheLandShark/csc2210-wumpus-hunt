@@ -88,11 +88,23 @@ void Player::useItem(char letter, char direction) {
             break;
     }
 }
-void Player::printNear() const{
-    const char nSymbol = getRoom()->getNorth()->getInnard()->getSymbol();
-    const char sSymbol = getRoom()->getSouth()->getInnard()->getSymbol();
-    const char eSymbol = getRoom()->getEast()->getInnard()->getSymbol();
-    const char wSymbol = getRoom()->getWest()->getInnard()->getSymbol();
+void Player::printNear() const {
+    char nSymbol ='0';
+    char sSymbol ='0';
+    char eSymbol ='0';
+    char wSymbol ='0';
+    if(getRoom()->getNorth()!=nullptr) {
+        nSymbol = getRoom()->getNorth()->getInnard()->getSymbol();
+    }
+    if(getRoom()->getEast()!=nullptr) {
+        eSymbol = getRoom()->getEast()->getInnard()->getSymbol();
+    }
+    if(getRoom()->getSouth()!=nullptr) {
+        sSymbol = getRoom()->getSouth()->getInnard()->getSymbol();
+    }
+    if(getRoom()->getWest()!=nullptr) {
+        wSymbol = getRoom()->getWest()->getInnard()->getSymbol();
+    }
     bool empty = true;
     if(nSymbol == '#' || sSymbol == '#' || eSymbol == '#' || wSymbol == '#') {
         cout << "Kraken is nearby." << endl;

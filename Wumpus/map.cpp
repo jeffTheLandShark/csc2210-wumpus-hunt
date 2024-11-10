@@ -80,6 +80,7 @@ void Map::display(const Room *playerRoom) const {
   }
 }
 Room *Map::get_random_room() const {
+  srand(time(nullptr));
   Room *current_room = first_room;
   int move = rand() % 6;
   for(int i = 0; i < move; i++) {
