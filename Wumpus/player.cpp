@@ -41,35 +41,42 @@ void Player::setRoom(Room* room) {
 Room* Player::getRoom() const{
     return location;
 }
-bool Player::playerMove(char dir) {
+void Player::playerMove(char dir) {
     //tolower
     if(location!=nullptr) {
         switch (dir) {
             case 'n':
                 if(location->getNorth() != nullptr) {
                     setRoom(location->getNorth());
+                } else {
+                    cout << "You can't move north" << endl;
                 }
-                return location->getNorth()!=nullptr;
+                break;
             case 'e':
                 if(location->getEast()!=nullptr) {
                     setRoom(location->getEast());
+                } else {
+                    cout << "You can't move east" << endl;
                 }
-            return location->getEast()!=nullptr;
+            break;
             case 's':
                 if(location->getSouth()!=nullptr) {
                     setRoom(location->getSouth());
+                } else {
+                    cout << "You can't move south" << endl;
                 }
-            return location->getSouth()!=nullptr;
+                break;
             case 'w':
                 if(location->getWest()!=nullptr) {
                     setRoom(location->getWest());
+                } else {
+                    cout << "You can't move west" << endl;
                 }
-            return location->getWest()!=nullptr;
+                break;
             default:
-                return false;
+                cout << "Unknown direction" << endl;
         }
     }
-    return false;
 }
 
 void Player::useItem(char letter, char direction) {

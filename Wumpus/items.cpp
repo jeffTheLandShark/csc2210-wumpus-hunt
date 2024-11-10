@@ -8,16 +8,16 @@
 
 #include <iostream>
 
-void AirTank::pickup(Player player) {
+void AirTank::pickup(Player& player) {
   player.addAir(air);
   std::cout << "AirTank::pickup" << std::endl << "Current Air: " << player.getAir() << std::endl;
 }
 
-void Net::pickup(Player player) {
+void Net::pickup(Player& player) {
   player.addNet();
 }
 
-bool Net::use(Player player, char direction) {
+bool Net::use(Player& player, char direction) {
   //todo check for nullptrs
   /*
   switch (direction) {
@@ -45,11 +45,11 @@ bool Net::use(Player player, char direction) {
   return false;
 }
 
-void Harpoon::pickup(Player player) {
+void Harpoon::pickup(Player& player) {
   player.addHarpoon();
 }
 
-bool Harpoon::use(Player player, char direction) {
+bool Harpoon::use(Player& player, char direction) {
   switch (direction) {
     case 'n':
       if(player.getRoom() != nullptr && player.getRoom()->getNorth() != nullptr) {

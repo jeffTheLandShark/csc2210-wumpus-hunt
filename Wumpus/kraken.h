@@ -14,7 +14,7 @@ public:
     Kraken(char symbol) : Innards(symbol) {};
 
     ~Kraken();
-    void trigger(Map map, Player player) const override;
+    void trigger(Map& map, Player& player) const override;
 private:
     char symbol;
 };

@@ -11,19 +11,19 @@ class Hazard : public Innards{
 public:
   Hazard(char symbol) : Innards(symbol){}
   ~Hazard();
-  virtual void trigger(Map map, Player player) = 0;
+  virtual void trigger(Map map, Player& player) = 0;
 };
 
 class Riptide : public Hazard {
 public:
   Riptide() : Hazard('!'){}
-  void trigger(Map map, Player player) override;
+  void trigger(Map map, Player& player) override;
 };
 
 class Whirlpool : public Hazard {
 public:
   Whirlpool() : Hazard('@'){}
-  void trigger(Map map, Player player) override;
+  void trigger(Map map, Player& player) override;
 };
 
 

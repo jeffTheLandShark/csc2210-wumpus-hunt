@@ -94,14 +94,17 @@ Room *Map::get_random_room() const {
 }
 
 bool Map::is_over() const {
+  cout << "is over method: " << game_over<< endl;
   return game_over;
 }
 bool Map::is_win() const {
   return win;
 }
 
-void Map::set_game_over(const bool game_over) {
-  this->game_over = game_over;
+void Map::set_game_over(bool over) {
+  cout << "set game over method: " << over << endl;
+  game_over = over;
+  cout << game_over << endl;
 }
 void Map::set_win(bool win) {
   this->win = win;

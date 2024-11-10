@@ -24,7 +24,7 @@ public:
   void addHarpoon();
   void setRoom(Room* room);
   Room* getRoom() const;
-  bool playerMove(char dir);
+  void playerMove(char dir);
   void useItem(char letter, char direction);
 
   void printNear() const;

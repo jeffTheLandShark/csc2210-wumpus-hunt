@@ -10,11 +10,11 @@ void printOptions(const Player *player);
 int main() {
     setup();
     auto *player = new Player();
-    const auto map = new Map(player);
+    Map* map = new Map(player);
 
     string input;
     string weaponDir;
-    while(input != "q" and !map->is_over()) {
+    while(input != "q" && !map->is_over()) {
         player->printNear();
         printOptions(player);
         cin >> input;
@@ -41,12 +41,17 @@ int main() {
             player->useItem('t', weaponDir.at(0));
             weaponDir = "";
         } else if(input == "n" || input == "s" || input == "e" || input == "w") {
-            bool happened = player->playerMove(input.at(0));
-            if(happened == false) {
-                cout << "Cannot move that way";
-            }
+            player->playerMove(input.at(0));
+            player->getRoom()->getInnard()->trigger(*map , *player);
         }
     }
+    if(map->is_win()) {
+        cout << "You win!";
+    } else {
+        cout << "You lose!";
+    }
+    delete map;
+    delete player;
     return 0;
 }
 
