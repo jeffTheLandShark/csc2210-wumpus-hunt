@@ -81,7 +81,7 @@ void Player::playerMove(char dir) {
 
 void Player::useItem(char letter, char direction) {
     switch (letter) {
-        case 'r':
+        case 'h':
             if(numHarpoons>0) {
                 Harpoon harpoon;
                 harpoon.use(*this, direction);
