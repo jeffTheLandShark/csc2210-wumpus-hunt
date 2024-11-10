@@ -67,3 +67,18 @@ bool Player::playerMove(char dir) {
     }
     return false;
 }
+
+void Player::useItem(char letter, char direction) {
+    switch (letter) {
+        case 'h':
+            if(numHarpoons>0) {
+
+            }
+            break;
+        case 'n':
+            if(numNets>0) {
+
+            }
+            break;
+    }
+}

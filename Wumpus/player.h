@@ -5,6 +5,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 #include "room.h"
+#include "items.h"
 
 constexpr int STARTING_AIR = 50;
 constexpr int STARTING_WEAPONS = 1;
@@ -24,6 +25,7 @@ public:
   void setRoom(Room* room);
   Room* getRoom() const;
   bool playerMove(char dir);
+  void useItem(char letter, char direction);
 private:
   int air;
   int numNets;
