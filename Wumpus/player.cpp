@@ -3,6 +3,10 @@
 //
 #include "room.h"
 #include "player.h"
+
+#include <iostream>
+using namespace std;
+
 Player::Player() {
     air = STARTING_AIR;
     numHarpoons = STARTING_WEAPONS;
@@ -82,5 +86,27 @@ void Player::useItem(char letter, char direction) {
                 net.use(*this, direction);
             }
             break;
+    }
+}
+void Player::printNear() const{
+    const char nSymbol = getRoom()->getNorth()->getInnard()->getSymbol();
+    const char sSymbol = getRoom()->getSouth()->getInnard()->getSymbol();
+    const char eSymbol = getRoom()->getEast()->getInnard()->getSymbol();
+    const char wSymbol = getRoom()->getWest()->getInnard()->getSymbol();
+    bool empty = true;
+    if(nSymbol == '#' || sSymbol == '#' || eSymbol == '#' || wSymbol == '#') {
+        cout << "Kraken is nearby." << endl;
+        empty = false;
+    }
+    if(nSymbol == '@' || sSymbol == '@' || eSymbol == '@' || wSymbol == '@') {
+        cout << "Whirlpool is nearby." << endl;
+        empty = false;
+    }
+    if(nSymbol == '!' || sSymbol == '!' || eSymbol == '!' || wSymbol == '!') {
+        cout << "Riptide is nearby." << endl;
+        empty = false;
+    }
+    if(empty) {
+        cout << "It is dark." << endl;
     }
 }

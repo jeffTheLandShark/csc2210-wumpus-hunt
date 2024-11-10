@@ -4,7 +4,7 @@
 
 #include "map.h"
 #include <iostream>
-
+#include <random>
 #include "hazard.h"
 #include "items.h"
 #include "kraken.h"
@@ -14,7 +14,7 @@ Map::Map(Player *player) {
   *rooms = new Room[30];
   for(auto & room : rooms) {
     room = new Room();
-    room->setInnard(new Innards('.')); //TODO fix this
+    room->setInnard(new Innards());
   }
   for(int i = 0; i < 30; i++) {
     if(i > 5) {
@@ -32,7 +32,8 @@ Map::Map(Player *player) {
   }
   first_room = rooms[0];
   Room *random_room = get_random_room();
-  random_room->setInnard(new Kraken());
+  random_room->setInnard(new Kraken('#'));
+
   while(random_room->getInnard()->getSymbol() != '.') {
     random_room = get_random_room();
   }
@@ -62,11 +63,15 @@ Map::Map(Player *player) {
   }
   player->setRoom(random_room);
   game_over = false;
-  win=false;
+  win = false;
 }
-void Map::display() const {
+void Map::display(const Room *playerRoom) const {
   for(int i = 0; i < 30; i++) {
-    rooms[i]->display();
+    if(rooms[i] == playerRoom) {
+      cout << "+";
+    } else {
+      rooms[i]->display();
+    }
     if(i % 6 == 5) {
       cout << endl;
     } else {
@@ -94,7 +99,7 @@ bool Map::is_win() const {
   return win;
 }
 
-void Map::set_game_over(bool game_over) {
+void Map::set_game_over(const bool game_over) {
   this->game_over = game_over;
 }
 void Map::set_win(bool win) {

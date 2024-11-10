@@ -10,7 +10,7 @@
 class Map {
 public:
   Map(Player *player);
-  void display() const;
+  void display(const Room *playerRoom) const;
   Room *get_random_room() const;
   bool is_over()  const;
   bool is_win() const;
@@ -18,7 +18,7 @@ public:
   void set_win(bool);
 private:
   Room *first_room;
-  Room *rooms[30];
+  Room *rooms[30]{};
   bool game_over;
   bool win;
 };

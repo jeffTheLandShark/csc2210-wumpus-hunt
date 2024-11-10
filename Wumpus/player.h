@@ -26,6 +26,9 @@ public:
   Room* getRoom() const;
   bool playerMove(char dir);
   void useItem(char letter, char direction);
+
+  void printNear() const;
+
 private:
   int air;
   int numNets;

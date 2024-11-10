@@ -6,29 +6,43 @@ using namespace std;
 void help();
 void setup();
 string toLowerCase(string str);
+void printOptions(const Player *player);
 int main() {
     setup();
-    Player *player = new Player();
-    Map* map = new Map(&*player);
+    auto *player = new Player();
+    const auto map = new Map(player);
 
-    cout << "\nAction: N)orth, S)outh, E)ast, W)est, M)ap, H)elp";
-    //todo
-    //if(player has net or harpoon){
-    //out statement of ha(R)poon
-    //out statement of ne(T)
-//}
-    cout << ", Q)uit: ";
     string input;
-    cin >> input;
-
-    while(toLowerCase(input) != "q") {
-        if(toLowerCase(input) == "h") {
-            help();
-        } else if(toLowerCase(input) == "m") {
-            map->display();
-        }
-        cout << "Action: N)orth, S)outh, E)ast, W)est, M)ap, H)elp, Q)uit: ";
+    string weaponDir;
+    while(input != "q" and !map->is_over()) {
+        player->printNear();
+        printOptions(player);
         cin >> input;
+        input = toLowerCase(input);
+
+        if(input == "h") {
+            help();
+        } else if(input == "m") {
+            map->display(player->getRoom());
+        } else if(input == "r") {
+            while(weaponDir != "n" && weaponDir != "s" && weaponDir != "e" && weaponDir != "w") {
+                cout << "use harpoon in which direction? (n/s/e/w)";
+                cin >> weaponDir;
+                weaponDir = toLowerCase(weaponDir);
+            }
+            player->useItem('h', weaponDir.at(0));
+            weaponDir = "";
+        } else if(input == "t") {
+            while(weaponDir != "n" && weaponDir != "s" && weaponDir != "e" && weaponDir != "w") {
+                cout << "use net in which direction? (n/s/e/w)";
+                cin >> weaponDir;
+                weaponDir = toLowerCase(weaponDir);
+            }
+            player->useItem('t', weaponDir.at(0));
+            weaponDir = "";
+        } else if(input == "n" || input == "s" || input == "e" || input == "w") {
+            player->playerMove(input.at(0));
+        }
     }
     return 0;
 }
@@ -60,4 +74,15 @@ void setup() {
 string toLowerCase(string str) {
     transform(str.begin(), str.end(), str.begin(), ::tolower);
     return str;
+}
+
+void printOptions(const Player *player) {
+    cout << "\nAction: (N)orth, (S)outh, (E)ast, (W)est, (M)ap, (H)elp";
+    if(player->getHarpoons() > 0) {
+        cout << ", shoot ha(R)poon";
+    }
+    if(player->getNets() > 0) {
+        cout << ", use ne(T)";
+    }
+    cout << ", Q)uit: ";
 }
