@@ -41,7 +41,10 @@ int main() {
             player->useItem('t', weaponDir.at(0));
             weaponDir = "";
         } else if(input == "n" || input == "s" || input == "e" || input == "w") {
-            player->playerMove(input.at(0));
+            bool happened = player->playerMove(input.at(0));
+            if(happened == false) {
+                cout << "Cannot move that way";
+            }
         }
     }
     return 0;

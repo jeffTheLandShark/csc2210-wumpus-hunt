@@ -23,7 +23,7 @@ Map::Map(Player *player) {
     if(i < 24) {
       rooms[i]->setSouth(rooms[i + 6]);
     }
-    if(i+1 % 6 != 0) {
+    if((i+1) % 6 != 0) {
       rooms[i]->setEast(rooms[i+1]);
     }
     if(i % 6 != 0) {
