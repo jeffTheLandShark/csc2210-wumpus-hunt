@@ -13,8 +13,8 @@
 class Items : public Innards {
 public:
   Items(char symbol) : Innards(symbol) {}
-  virtual ~Items() = default;
-  virtual void pickup(Player player);
+  ~Items() = default;
+  virtual void pickup(Player player) =0;
 
 private:
   bool used = false;
@@ -33,7 +33,7 @@ private:
 class Weapon : public Items {
 public:
   Weapon() : Items('>') {}
-  virtual bool use(Player player, char direction);
+  virtual bool use(Player player, char direction) =0;
 };
 
 class Net : public Weapon {

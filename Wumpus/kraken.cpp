@@ -3,3 +3,11 @@
 //
 
 #include "kraken.h"
+Kraken::Kraken() {
+    symbol = '#';
+}
+
+
+void Kraken::trigger(Map map, Player player) const {
+
+}

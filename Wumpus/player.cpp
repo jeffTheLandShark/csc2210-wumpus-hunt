@@ -4,7 +4,10 @@
 
 #include "player.h"
 Player::Player() {
-
+    air = STARTING_AIR;
+    numHarpoons = STARTING_WEAPONS;
+    numNets = STARTING_WEAPONS;
+    location = nullptr;
 }
 Player::~Player() {
 
@@ -36,15 +39,31 @@ Room* Player::getRoom() const{
 }
 bool Player::playerMove(char dir) {
     //tolower
-    switch (dir) {
-        case 'n':
-            //todo north != nullptr
-            break;
-        case 'e':
-            return false;
-        case 's':
-            return true;
-        case 'w':
-            return true;
+    if(location!=nullptr) {
+        switch (dir) {
+            case 'n':
+                if(location->getNorth() != nullptr) {
+                    setRoom(location->getNorth());
+                }
+                return location->getNorth()!=nullptr;
+            case 'e':
+                if(location->getEast()!=nullptr) {
+                    setRoom(location->getEast());
+                }
+            return location->getEast()!=nullptr;
+            case 's':
+                if(location->getSouth()!=nullptr) {
+                    setRoom(location->getSouth());
+                }
+            return location->getSouth()!=nullptr;
+            case 'w':
+                if(location->getWest()!=nullptr) {
+                    setRoom(location->getWest());
+                }
+            return location->getWest()!=nullptr;
+            default:
+                return false;
+        }
     }
+    return false;
 }

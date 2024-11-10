@@ -15,6 +15,6 @@ void Innards::display() const {
   std::cout << symbol;
 }
 
-void Innards::trigger() const {
+void Innards::trigger(Map map, Player player) const {
   std::cout << "It is dark and wet";
 }

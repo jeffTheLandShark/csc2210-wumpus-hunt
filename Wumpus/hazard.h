@@ -4,9 +4,7 @@
 
 #ifndef HAZARD_H
 #define HAZARD_H
-#include "player.h"
 #include "innards.h"
-#include "Map.h"
 
 
 class Hazard : public Innards{

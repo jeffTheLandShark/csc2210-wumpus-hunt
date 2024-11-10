@@ -4,6 +4,7 @@
 
 #include "hazard.h"
 
+
 void Riptide::trigger(Map map, Player player) {
   Room *new_room = map.get_random_room();
   while (!(new_room->isEdge())) {

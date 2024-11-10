@@ -25,9 +25,9 @@ public:
   Room* getRoom() const;
   bool playerMove(char dir);
 private:
-  int air = STARTING_AIR;
-  int numNets = STARTING_WEAPONS;
-  int numHarpoons = STARTING_WEAPONS;
+  int air;
+  int numNets;
+  int numHarpoons;
   Room* location;
 
 };

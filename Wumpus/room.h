@@ -4,7 +4,8 @@
 
 #ifndef ROOM_H
 #define ROOM_H
-#include "innards.h"
+class Player;
+class Innards;
 
 class Room {
 public:
@@ -13,10 +14,12 @@ public:
     void setSouth(Room *room);
     void setEast(Room *room);
     void setWest(Room *room);
-    Room getNorth() const;
-    Room getSouth() const;
-    Room getEast() const;
-    Room getWest() const;
+
+    Room *getNorth() const;
+    Room *getSouth() const;
+
+    Room *getEast() const;
+    Room *getWest() const;
 
     bool hasKraken() const;
 

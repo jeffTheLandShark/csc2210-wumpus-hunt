@@ -5,11 +5,18 @@
 //Kraken stuff
 #ifndef KRACKEN_H
 #define KRACKEN_H
+#include "innards.h"
 
 
+class Kraken : public Innards {
+public:
+    Kraken();
+    Kraken(char symbol) : Innards(symbol) {};
 
-class Kraken {
-
+    ~Kraken();
+    void trigger(Map map, Player player) const override;
+private:
+    char symbol;
 };
 
 

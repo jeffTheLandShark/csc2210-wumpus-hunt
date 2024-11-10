@@ -5,12 +5,16 @@
 #ifndef INNARDS_H
 #define INNARDS_H
 
+
+#include "map.h"
+#include "player.h"
+
 class Innards {
 public:
   Innards() : Innards('.') {}
   Innards(char symbol) : symbol(symbol) {}
   void display() const;
-  void trigger() const;
+  virtual void trigger(Map map, Player player) const;
   char getSymbol() const;
 
 protected:

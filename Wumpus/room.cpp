@@ -3,8 +3,8 @@
 //
 
 #include "room.h"
-
 #include <iostream>
+#include "innards.h"
 
 Room::Room() {
   north = nullptr;
@@ -30,20 +30,20 @@ void Room::setWest(Room *room) {
   west = room;
 }
 
-Room Room::getNorth() const {
-  return *north;
+Room *Room::getNorth() const {
+  return north;
 }
 
-Room Room::getSouth() const {
-  return *south;
+Room *Room::getSouth() const {
+  return south;
 }
 
-Room Room::getEast() const {
-  return *east;
+Room *Room::getEast() const {
+  return east;
 }
 
-Room Room::getWest() const {
-  return *west;
+Room *Room::getWest() const {
+  return west;
 }
 
 void Room::setInnard(Innards *innard) {

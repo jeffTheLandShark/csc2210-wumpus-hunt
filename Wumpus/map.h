@@ -6,7 +6,7 @@
 #define MAP_H
 
 #include "player.h"
-#include "Room.h"
+#include "room.h"
 
 class Map {
 public:

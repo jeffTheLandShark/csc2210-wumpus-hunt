@@ -23,11 +23,11 @@ Map::Map(Player *player) {
     if(i < 24) {
       rooms[i]->setSouth(rooms[i + 6]);
     }
-    if(i % 6 != 0) {
-      rooms[i]->setEast(rooms[i] - 1);
+    if(i+1 % 6 != 0) {
+      rooms[i]->setEast(rooms[i+1]);
     }
-    if(i % 6 != 5) {
-      rooms[i]->setWest(rooms[i] + 1);
+    if(i % 6 != 0) {
+      rooms[i]->setWest(rooms[i-1]);
     }
   }
   first_room = rooms[0];
@@ -76,11 +76,11 @@ Room *Map::get_random_room() const {
   Room *current_room = first_room;
   int move = rand() % 6;
   for(int i = 0; i < move; i++) {
-    *current_room = current_room->getEast();
+    current_room = current_room->getEast();
   }
   move = rand() % 5;
   for(int i = 0; i < move; i++) {
-    *current_room = current_room->getSouth();
+    current_room = current_room->getSouth();
   }
   return current_room;
 }
