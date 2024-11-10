@@ -30,7 +30,7 @@ int main() {
                 cin >> weaponDir;
                 weaponDir = toLowerCase(weaponDir);
             }
-            player->useItem('h', weaponDir.at(0));
+            player->useItem(*map,'h', weaponDir.at(0));
             weaponDir = "";
         } else if(input == "t") {
             while(weaponDir != "n" && weaponDir != "s" && weaponDir != "e" && weaponDir != "w") {
@@ -38,7 +38,7 @@ int main() {
                 cin >> weaponDir;
                 weaponDir = toLowerCase(weaponDir);
             }
-            player->useItem('t', weaponDir.at(0));
+            player->useItem(*map, 't', weaponDir.at(0));
             weaponDir = "";
         } else if(input == "n" || input == "s" || input == "e" || input == "w") {
             player->playerMove(input.at(0));

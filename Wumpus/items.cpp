@@ -58,17 +58,17 @@ bool Harpoon::use(Player& player, char direction) {
     return false;
     case 'e':
       if(player.getRoom() != nullptr && player.getRoom()->getEast() != nullptr) {
-        return player.getRoom()->getNorth()->hasKraken();
+        return player.getRoom()->getEast()->hasKraken();
       }
     return false;
     case 's':
       if(player.getRoom() != nullptr && player.getRoom()->getSouth() != nullptr) {
-        return player.getRoom()->getNorth()->hasKraken();
+        return player.getRoom()->getSouth()->hasKraken();
       }
     return false;
     case 'w':
       if(player.getRoom() != nullptr && player.getRoom()->getWest() != nullptr) {
-        return player.getRoom()->getNorth()->hasKraken();
+        return player.getRoom()->getWest()->hasKraken();
       }
     return false;
     default:

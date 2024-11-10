@@ -88,6 +88,14 @@ void Player::useItem(Map& map, char letter, char direction) {
                 hit = harpoon.use(*this, direction);
                 map.set_game_over(hit);
                 map.set_win(hit);
+                if(hit) {
+                    cout << "You shot the kraken"<<endl;
+                } else {
+                    cout << "You missed" << endl;
+                }
+                numHarpoons--;
+            } else {
+                cout << "Not enough harpoons"<<endl;
             }
             break;
         case 't':
@@ -96,7 +104,12 @@ void Player::useItem(Map& map, char letter, char direction) {
                 hit = net.use(*this, direction);
                 if(hit == true) {
                     cout << "The kraken was in the " << direction << " direction" <<endl;
+                } else {
+                    cout << "You missed" << endl;
                 }
+                numNets--;
+            } else {
+                cout << "Not enough nets" << endl;
             }
             break;
         default:
