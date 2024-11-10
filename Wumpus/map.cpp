@@ -61,6 +61,8 @@ Map::Map(Player *player) {
     random_room = get_random_room();
   }
   player->setRoom(random_room);
+  game_over = false;
+  win=false;
 }
 void Map::display() const {
   for(int i = 0; i < 30; i++) {
@@ -83,4 +85,18 @@ Room *Map::get_random_room() const {
     current_room = current_room->getSouth();
   }
   return current_room;
+}
+
+bool Map::is_over() const {
+  return game_over;
+}
+bool Map::is_win() const {
+  return win;
+}
+
+void Map::set_game_over(bool game_over) {
+  this->game_over = game_over;
+}
+void Map::set_win(bool win) {
+  this->win = win;
 }

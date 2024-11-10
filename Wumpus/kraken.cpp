@@ -9,5 +9,7 @@ Kraken::Kraken() {
 
 
 void Kraken::trigger(Map map, Player player) const {
-
+    map.set_game_over(true);
+    map.set_win(false);
 }
+
