@@ -5,7 +5,6 @@
 #ifndef MAP_H
 #define MAP_H
 
-#include "player.h"
 #include "room.h"
 
 class Map {

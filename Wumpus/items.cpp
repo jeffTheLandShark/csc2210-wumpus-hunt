@@ -2,7 +2,7 @@
  *
  *
  */
-
+#include "room.h"
 #include "items.h"
 #include "player.h"
 

@@ -1,7 +1,7 @@
 #include <iostream>
 #include <windows.h>
 #include <algorithm>
-#include "Map.h"
+#include "map.h"
 using namespace std;
 void help();
 void setup();

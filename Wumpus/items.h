@@ -5,14 +5,12 @@
 
 #ifndef ITEM_H
 #define ITEM_H
-
-#include "player.h"
 #include "innards.h"
 
 
 class Items : public Innards {
 public:
-  Items(char symbol) : Innards(symbol) {}
+  Items(char symbol) : Innards(symbol) {};
   ~Items() = default;
   virtual void pickup(Player player) =0;
 

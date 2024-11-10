@@ -4,8 +4,8 @@
 
 #ifndef ROOM_H
 #define ROOM_H
-class Player;
-class Innards;
+#include "player.h"
+#include "innards.h"
 
 class Room {
 public:

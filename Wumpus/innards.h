@@ -6,8 +6,8 @@
 #define INNARDS_H
 
 
-#include "map.h"
-#include "player.h"
+class Map;
+class Player;
 
 class Innards {
 public:

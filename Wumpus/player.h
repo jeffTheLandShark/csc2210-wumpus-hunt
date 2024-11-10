@@ -4,7 +4,7 @@
 
 #ifndef PLAYER_H
 #define PLAYER_H
-#include "room.h"
+class Room;
 #include "items.h"
 
 constexpr int STARTING_AIR = 50;
