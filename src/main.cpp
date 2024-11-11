@@ -7,7 +7,7 @@ using namespace std;
 void help();
 void setup();
 string toLowerCase(string str);
-void printOptions(const Player *player);
+void printOptions(const Player *player, const Map *map);
 
 int main() {
   setup();
@@ -18,7 +18,7 @@ int main() {
   string weaponDir;
   while (input != "q" && !map->is_over()) {
     player->printNear();
-    printOptions(player);
+    printOptions(player, map);
     cin >> input;
     input = toLowerCase(input);
 

@@ -27,22 +27,106 @@ void Net::pickup(Player &player) {
 }
 
 bool Net::use(Player &player, char direction) {
+  bool hit = false;
   switch (direction) {
     case 'n': {
       Room *northRoom = player.getRoom()->getNorth();
-      return northRoom->hasKraken() || northRoom->getEast()->hasKraken() || northRoom->getWest()->hasKraken();
+      if(northRoom == nullptr) {
+        return false;
+      }
+      if(northRoom->hasKraken()) {
+        hit=true;
+      }
+      if(northRoom->getEast() != nullptr) {
+        if(!hit) {
+          if(northRoom->getEast()->hasKraken()) {
+            hit=true;
+          }
+        }
+      }
+      if(northRoom->getWest() != nullptr) {
+        if(!hit) {
+          if(northRoom->getWest()->hasKraken()) {
+            hit=true;
+          }
+        }
+      }
+      return hit;
     }
     case 'e': {
       Room *eastRoom = player.getRoom()->getEast();
-      return eastRoom->hasKraken() || eastRoom->getNorth()->hasKraken() || eastRoom->getSouth()->hasKraken();
+      //exits method because it cannot be in that direction
+      if(eastRoom == nullptr) {
+        return false;
+      }
+      if(eastRoom->hasKraken()) {
+        hit = true;
+      }
+
+      if(eastRoom->getNorth() != nullptr) {
+        if(!hit) {
+          if(eastRoom->getNorth()->hasKraken()) {
+            hit = true;
+          }
+        }
+      }
+      if(eastRoom->getSouth() != nullptr) {
+        if(!hit) {
+          if(eastRoom->hasKraken()) {
+            hit = true;
+          }
+        }
+      }
+      return hit;
     }
     case 's': {
       Room *southRoom = player.getRoom()->getSouth();
-      return southRoom->hasKraken() || southRoom->getEast()->hasKraken() || southRoom->getWest()->hasKraken();
+      if(southRoom == nullptr) {
+        return false;
+      }
+      if(southRoom->hasKraken()) {
+        hit = true;
+      }
+      if(southRoom->getNorth() != nullptr) {
+        if(!hit) {
+          if(southRoom->getNorth()->hasKraken()) {
+            hit = true;
+          }
+        }
+      }
+      if(southRoom->getSouth() != nullptr) {
+        if(!hit) {
+          if(southRoom->getSouth()->hasKraken()) {
+            hit = true;
+          }
+        }
+      }
+
+      return hit;
     }
     case 'w': {
       Room *westRoom = player.getRoom()->getWest();
-      return westRoom->hasKraken() || westRoom->getNorth()->hasKraken() || westRoom->getSouth()->hasKraken();
+      if(westRoom == nullptr) {
+        return false;
+      }
+      if(westRoom->hasKraken()) {
+        hit = true;
+      }
+      if(westRoom->getNorth() != nullptr) {
+        if(!hit) {
+          if(westRoom->getNorth()->hasKraken()) {
+            hit = true;
+          }
+        }
+      }
+      if(westRoom->getSouth() != nullptr) {
+        if(!hit) {
+          if(westRoom->getSouth()->hasKraken()) {
+            hit=true;
+          }
+        }
+      }
+      return hit;
     }
     default:
       throw std::invalid_argument("Invalid direction");
