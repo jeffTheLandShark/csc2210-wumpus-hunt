@@ -49,7 +49,7 @@ int main() {
       player->playerMove(input.at(0));
       player->getRoom()->getInnard()->trigger(*map, *player);
       int airRemaining = player->getAir();
-      if (airRemaining > 0) {
+      if (airRemaining > 0 && !map->is_over()) {
         cout << "You have " << airRemaining << " units of oxygen remaining" << endl;
       } else {
         cout << "You have run out of air." << endl;
