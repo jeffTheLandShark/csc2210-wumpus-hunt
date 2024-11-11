@@ -146,12 +146,12 @@ void Player::printNear() const {
   }
 
   if (nSymbol == '#' || sSymbol == '#' || eSymbol == '#' || wSymbol == '#') {
-    cout << "Kraken is nearby." << endl;
+    cout << "You feel a chill and a sense of dread." << endl;
   }
   if (nSymbol == '@' || sSymbol == '@' || eSymbol == '@' || wSymbol == '@') {
-    cout << "Whirlpool is nearby." << endl;
+    cout << "You feel water swirling nearby." << endl;
   }
   if (nSymbol == '!' || sSymbol == '!' || eSymbol == '!' || wSymbol == '!') {
-    cout << "Riptide is nearby." << endl;
+    cout << "You feel water pulling past you." << endl;
   }
 }
