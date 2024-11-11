@@ -5,8 +5,11 @@
 using namespace std;
 
 void help();
+
 void setup();
+
 string toLowerCase(string str);
+
 void printOptions(const Player *player, const Map *map);
 
 int main() {
@@ -67,20 +70,32 @@ int main() {
 }
 
 void help() {
-    cout << "Welcome to hunt the Kraken. You are a deep sea scuba diver seeking to kill the Kraken before you run out of oxygen. The sea floor is divided into 30 spaces in a 5 high 6 wide rectangle. Each space is connected to 4 others." << endl << endl;
-    cout << "Hazards:" << endl;
-    cout << "Whirlpool - One space has a whirlpool. If you go there, you will be whisked away to a random space and will lose 5 oxygen." << endl;
-    cout << "Riptide - Two spaces have riptides. If you go there, you will be whisked away to a random space on the edge of the map and will lose 10 oxygen." << endl << endl;
-    cout << "Kraken:" << endl;
-    cout << "If you attempt to move into the Kraken's space, it eats you and you lose." << endl << endl;
-    cout << "You:" << endl;
-    cout << "Each turn you may move or use a weapon."  << endl;
-    cout << "Moving: You can move one space North, South, East, or West if there is a room in that direction." << endl;
-    cout << "Oxygen: Each move consumes 1 Oxygen. If you run out of Oxygen you lose. There is one Oxygen tank that you can find." << endl;
-    cout << "Using Weapons: You can use the Harpoon to attack an adjacent space (you start with 2 harpoons and can find 2 more)." << endl;
-    cout << "If you hit the Kraken with a Harpoon, you win." << endl;
-    cout << "If you find the net, you can throw it to see if the Kraken is hiding in any of the nearest 3 spaces in the direction you choose. The net does not kill the Kraken." << endl;
-    cout << "You will be given hints indicating when a hazard or the Kraken is nearby." << endl << endl;
+  cout <<
+      "Welcome to hunt the Kraken. You are a deep sea scuba diver seeking to kill the Kraken before you run out of oxygen. The sea floor is divided into 30 spaces in a 5 high 6 wide rectangle. Each space is connected to 4 others."
+      << endl << endl;
+  cout << "Hazards:" << endl;
+  cout <<
+      "Whirlpool - One space has a whirlpool. If you go there, you will be whisked away to a random space and will lose 5 oxygen."
+      << endl;
+  cout <<
+      "Riptide - Two spaces have riptides. If you go there, you will be whisked away to a random space on the edge of the map and will lose 10 oxygen."
+      << endl << endl;
+  cout << "Kraken:" << endl;
+  cout << "If you attempt to move into the Kraken's space, it eats you and you lose." << endl << endl;
+  cout << "You:" << endl;
+  cout << "Each turn you may move or use a weapon." << endl;
+  cout << "Moving: You can move one space North, South, East, or West if there is a room in that direction." << endl;
+  cout <<
+      "Oxygen: Each move consumes 1 Oxygen. If you run out of Oxygen you lose. There is one Oxygen tank that you can find."
+      << endl;
+  cout <<
+      "Using Weapons: You can use the Harpoon to attack an adjacent space (you start with 2 harpoons and can find 2 more)."
+      << endl;
+  cout << "If you hit the Kraken with a Harpoon, you win." << endl;
+  cout <<
+      "If you find the net, you can throw it to see if the Kraken is hiding in any of the nearest 3 spaces in the direction you choose. The net does not kill the Kraken."
+      << endl;
+  cout << "You will be given hints indicating when a hazard or the Kraken is nearby." << endl << endl;
 }
 
 void setup() {
@@ -95,8 +110,21 @@ string toLowerCase(string str) {
   return str;
 }
 
-void printOptions(const Player *player) {
-  cout << "\nAction: (N)orth, (S)outh, (E)ast, (W)est, (M)ap, (H)elp";
+void printOptions(const Player *player, const Map *map) {
+  cout << "\nAction: ";
+  if (Map::roomExists(player->getRoom(), 'n')) {
+    cout << "(N)orth, ";
+  }
+  if (Map::roomExists(player->getRoom(), 's')) {
+    cout << "(S)outh, ";
+  }
+  if (Map::roomExists(player->getRoom(), 'e')) {
+    cout << "(E)ast, ";
+  }
+  if (Map::roomExists(player->getRoom(), 'w')) {
+    cout << "(W)est, ";
+  }
+  cout << "(M)ap, (H)elp";
   if (player->getHarpoons() > 0) {
     cout << ", shoot ha(R)poon";
   }
