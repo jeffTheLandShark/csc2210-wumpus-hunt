@@ -40,6 +40,7 @@ void Player::addHarpoon() {
 
 void Player::setRoom(Room *room) {
   this->location = room;
+  air--;
 }
 
 Room *Player::getRoom() const {

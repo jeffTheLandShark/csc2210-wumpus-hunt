@@ -45,8 +45,17 @@ int main() {
     } else if (input == "n" || input == "s" || input == "e" || input == "w") {
       player->playerMove(input.at(0));
       player->getRoom()->getInnard()->trigger(*map, *player);
+      int airRemaining = player->getAir();
+      if (airRemaining > 0) {
+        cout << "You have " << airRemaining << " units of oxygen remaining" << endl;
+      } else {
+        cout << "You have run out of air." << endl;
+        map->set_game_over(true);
+        map->set_win(false);
+      }
     }
   }
+
   if (map->is_win()) {
     cout << "You win!";
   } else {
