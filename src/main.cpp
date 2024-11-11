@@ -72,7 +72,7 @@ void help() {
     cout << "Whirlpool - One space has a whirlpool. If you go there, you will be whisked away to a random space and will lose 5 oxygen." << endl;
     cout << "Riptide - Two spaces have riptides. These will drown you and you will lose." << endl << endl;
     cout << "Kraken:" << endl;
-    cout << "The Kraken is not affected by hazards. The Kraken is usually asleep. If you shoot a Harpoon and miss, he might wake up and move to an adjacent space. If you attempt to move into the Kraken's space, it eats you and you lose." << endl << endl;
+    cout << "The Kraken is not affected by hazards. The Kraken is usually asleep. If you attempt to move into the Kraken's space, it eats you and you lose." << endl << endl;
     cout << "You:" << endl;
     cout << "Each turn you may move or use a weapon."  << endl;
     cout << "Moving: You can move one space North, South, East, or West if there is a room in that direction." << endl;
