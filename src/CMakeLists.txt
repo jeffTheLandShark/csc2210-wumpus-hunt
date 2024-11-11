@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.29)
-project(Wumpus)
+project(src)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(Wumpus main.cpp
+add_executable(src main.cpp
         room.cpp
         kraken.cpp
         map.cpp
