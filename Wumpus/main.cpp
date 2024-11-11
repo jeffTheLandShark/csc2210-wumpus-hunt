@@ -7,7 +7,7 @@ using namespace std;
 void help();
 void setup();
 string toLowerCase(string str);
-void printOptions(const Player *player);
+void printOptions(const Player *player, const Map *map);
 
 int main() {
   setup();
@@ -18,7 +18,7 @@ int main() {
   string weaponDir;
   while (input != "q" && !map->is_over()) {
     player->printNear();
-    printOptions(player);
+    printOptions(player, map);
     cin >> input;
     input = toLowerCase(input);
 
@@ -95,8 +95,21 @@ string toLowerCase(string str) {
   return str;
 }
 
-void printOptions(const Player *player) {
-  cout << "\nAction: (N)orth, (S)outh, (E)ast, (W)est, (M)ap, (H)elp";
+void printOptions(const Player *player, const Map *map) {
+  cout << "\nAction: ";
+  if(Map::roomExists(player->getRoom(), 'n')) {
+    cout << "(N)orth, ";
+  }
+  if(Map::roomExists(player->getRoom(), 's')){
+    cout << "(S)outh, ";
+  }
+  if(Map::roomExists(player->getRoom(), 'e')) {
+    cout << "(E)ast, ";
+  }
+  if(Map::roomExists(player->getRoom(), 'w')){
+    cout << "(W)est, ";
+  }
+  cout << "(M)ap, (H)elp";
   if (player->getHarpoons() > 0) {
     cout << ", shoot ha(R)poon";
   }
