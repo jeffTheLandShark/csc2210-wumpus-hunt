@@ -9,7 +9,7 @@
 class Hazard : public Innards {
 public:
   Hazard(char symbol) : Innards(symbol) {}
-  Hazard(char symbol, int airLoss) : Innards(symbol) { airLoss(airLoss); }
+  Hazard(char symbol, int airLoss) : Innards(symbol) { this->airLoss = airLoss; }
 protected:
   int airLoss;
 };
