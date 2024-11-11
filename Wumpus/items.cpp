@@ -12,6 +12,7 @@
 
 void Items::trigger(Map &map, Player &player) {
   pickup(player);
+  player.getRoom()->setInnard(new Innards);
 }
 
 
