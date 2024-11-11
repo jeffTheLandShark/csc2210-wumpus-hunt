@@ -9,9 +9,7 @@
 
 class Hazard : public Innards{
 public:
-  Hazard(char symbol) : Innards(symbol){}
-  ~Hazard();
-  virtual void trigger(Map map, Player& player) = 0;
+  Hazard(char symbol) : Innards(symbol) {}
 };
 
 class Riptide : public Hazard {

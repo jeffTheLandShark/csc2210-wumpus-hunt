@@ -14,10 +14,10 @@ public:
   Innards() : Innards('.') {}
   Innards(char symbol) : symbol(symbol) {}
   void display() const;
-  virtual void trigger(Map& map, Player& player) const;
   char getSymbol() const;
+  virtual void trigger(Map &map, Player &player);
 
-protected:
+private:
   char symbol;
 };
 

@@ -32,7 +32,7 @@ Map::Map(Player *player) {
   }
   first_room = rooms[0];
   Room *random_room = get_random_room();
-  random_room->setInnard(new Kraken('#'));
+  random_room->setInnard(new Kraken());
 
   while(random_room->getInnard()->getSymbol() != '.') {
     random_room = get_random_room();
@@ -106,4 +106,20 @@ void Map::set_game_over(bool over) {
 }
 void Map::set_win(bool win) {
   this->win = win;
+}
+
+bool Map::roomExists(Room *room, char dir) {
+  switch (dir) {
+    case 'n':
+      return room->getNorth() != nullptr;
+    case 'e':
+      return room->getEast() != nullptr;
+    case 's':
+      return room->getSouth() != nullptr;
+    case 'w':
+      return room->getWest() != nullptr;
+    default:
+      cout << "Unknown direction" << endl;
+      return false;
+  }
 }

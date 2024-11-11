@@ -16,6 +16,7 @@ public:
   bool is_win() const;
   void set_game_over(bool);
   void set_win(bool);
+  static bool roomExists(Room *room, char dir);
 private:
   Room *first_room;
   Room *rooms[30]{};

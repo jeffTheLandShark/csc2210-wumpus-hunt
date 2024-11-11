@@ -12,7 +12,8 @@ class Items : public Innards {
 public:
   Items(char symbol) : Innards(symbol) {};
   ~Items() = default;
-  virtual void pickup(Player& player) =0;
+  virtual void pickup(Player &player) =0;
+  void trigger(Map &map, Player &player) override;
 
 private:
   bool used = false;
@@ -31,7 +32,8 @@ private:
 class Weapon : public Items {
 public:
   Weapon() : Items('>') {}
-  virtual bool use(Player& player, char direction) =0;
+  ~Weapon() = default;
+  virtual bool use(Player &player, char direction) =0;
 };
 
 class Net : public Weapon {

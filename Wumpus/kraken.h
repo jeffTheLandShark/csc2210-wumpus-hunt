@@ -10,15 +10,9 @@
 
 class Kraken : public Innards {
 public:
-    Kraken();
-    Kraken(char symbol) : Innards(symbol) {};
-
-    ~Kraken();
-    void trigger(Map& map, Player& player) const override;
-private:
-    char symbol;
+  Kraken() : Innards('#') {}
+  void trigger(Map &map, Player &player) override;
 };
-
 
 
 #endif //KRACKEN_H

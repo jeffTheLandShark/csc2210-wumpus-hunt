@@ -8,22 +8,27 @@
 
 #include <iostream>
 
-void AirTank::pickup(Player& player) {
-  player.addAir(air);
-  std::cout << "AirTank::pickup" << std::endl << "Current Air: " << player.getAir() << std::endl;
+#include "map.h"
+
+void Items::trigger(Map &map, Player &player) {
+  pickup(player);
 }
 
-void Net::pickup(Player& player) {
+
+void AirTank::pickup(Player &player) {
+  std::cout << "You find an airtank with " << air << " oxygen." << std::endl;
+  player.addAir(air);
+}
+
+void Net::pickup(Player &player) {
+  std::cout << "You find a net." << std::endl;
   player.addNet();
 }
 
-bool Net::use(Player& player, char direction) {
-  //todo check for nullptrs
-  /*
+bool Net::use(Player &player, char direction) {
   switch (direction) {
     case 'n': {
       Room *northRoom = player.getRoom()->getNorth();
-
       return northRoom->hasKraken() || northRoom->getEast()->hasKraken() || northRoom->getWest()->hasKraken();
     }
     case 'e': {
@@ -41,36 +46,35 @@ bool Net::use(Player& player, char direction) {
     default:
       throw std::invalid_argument("Invalid direction");
   }
-  */
-  return false;
 }
 
-void Harpoon::pickup(Player& player) {
+void Harpoon::pickup(Player &player) {
+  std::cout << "You find a harpoon." << std::endl;
   player.addHarpoon();
 }
 
-bool Harpoon::use(Player& player, char direction) {
+bool Harpoon::use(Player &player, char direction) {
   switch (direction) {
     case 'n':
-      if(player.getRoom() != nullptr && player.getRoom()->getNorth() != nullptr) {
+      if (player.getRoom() != nullptr && player.getRoom()->getNorth() != nullptr) {
         return player.getRoom()->getNorth()->hasKraken();
       }
-    return false;
+      return false;
     case 'e':
-      if(player.getRoom() != nullptr && player.getRoom()->getEast() != nullptr) {
+      if (player.getRoom() != nullptr && player.getRoom()->getEast() != nullptr) {
         return player.getRoom()->getEast()->hasKraken();
       }
-    return false;
+      return false;
     case 's':
-      if(player.getRoom() != nullptr && player.getRoom()->getSouth() != nullptr) {
+      if (player.getRoom() != nullptr && player.getRoom()->getSouth() != nullptr) {
         return player.getRoom()->getSouth()->hasKraken();
       }
-    return false;
+      return false;
     case 'w':
-      if(player.getRoom() != nullptr && player.getRoom()->getWest() != nullptr) {
+      if (player.getRoom() != nullptr && player.getRoom()->getWest() != nullptr) {
         return player.getRoom()->getWest()->hasKraken();
       }
-    return false;
+      return false;
     default:
       throw std::invalid_argument("Invalid direction");
   }
