@@ -7,21 +7,21 @@
 #include "innards.h"
 
 
-class Hazard : public Innards{
+class Hazard : public Innards {
 public:
   Hazard(char symbol) : Innards(symbol) {}
 };
 
 class Riptide : public Hazard {
 public:
-  Riptide() : Hazard('!'){}
-  void trigger(Map map, Player& player) override;
+  Riptide() : Hazard('!') {}
+  void trigger(Map &map, Player &player) override;
 };
 
 class Whirlpool : public Hazard {
 public:
-  Whirlpool() : Hazard('@'){}
-  void trigger(Map map, Player& player) override;
+  Whirlpool() : Hazard('@') {}
+  void trigger(Map &map, Player &player) override;
 };
 
 

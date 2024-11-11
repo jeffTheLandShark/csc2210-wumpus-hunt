@@ -10,7 +10,7 @@
 
 class Items : public Innards {
 public:
-  Items(char symbol) : Innards(symbol) {};
+  Items(char symbol) : Innards(symbol) {}
   ~Items() = default;
   virtual void pickup(Player &player) =0;
   void trigger(Map &map, Player &player) override;
@@ -23,7 +23,7 @@ class AirTank : public Items {
 public:
   AirTank() : AirTank(5) {}
   AirTank(int air) : Items('?'), air(air) {}
-  void pickup(Player& player) override;
+  void pickup(Player &player) override;
 
 private:
   int air;
@@ -38,13 +38,13 @@ public:
 
 class Net : public Weapon {
 public:
-  void pickup(Player& player) override;
-  bool use(Player& player, char direction) override;
+  void pickup(Player &player) override;
+  bool use(Player &player, char direction) override;
 };
 
 class Harpoon : public Weapon {
 public:
-  void pickup(Player& player) override;
-  bool use(Player& player, char direction) override;
+  void pickup(Player &player) override;
+  bool use(Player &player, char direction) override;
 };
 #endif //ITEM_H

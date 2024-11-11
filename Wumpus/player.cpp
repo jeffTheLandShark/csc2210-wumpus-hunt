@@ -8,36 +8,44 @@
 using namespace std;
 
 Player::Player() {
-    air = STARTING_AIR;
-    numHarpoons = STARTING_WEAPONS;
-    numNets = STARTING_WEAPONS;
-    location = nullptr;
+  air = STARTING_AIR;
+  numHarpoons = STARTING_WEAPONS;
+  numNets = STARTING_WEAPONS;
+  location = nullptr;
 }
 
 int Player::getAir() const {
-    return air;
+  return air;
 }
+
 int Player::getNets() const {
-    return numNets;
+  return numNets;
 }
+
 int Player::getHarpoons() const {
-    return numHarpoons;
+  return numHarpoons;
 }
+
 void Player::addAir(int tankAir) {
-    air += tankAir;
+  air += tankAir;
 }
+
 void Player::addNet() {
-    numNets++;
+  numNets++;
 }
+
 void Player::addHarpoon() {
-    numHarpoons++;
+  numHarpoons++;
 }
-void Player::setRoom(Room* room) {
-    this->location=room;
+
+void Player::setRoom(Room *room) {
+  this->location = room;
 }
-Room* Player::getRoom() const{
-    return location;
+
+Room *Player::getRoom() const {
+  return location;
 }
+
 void Player::playerMove(char dir) {
   //tolower
   if (location != nullptr) {
@@ -119,36 +127,36 @@ void Player::useItem(Map &map, char letter, char direction) {
 }
 
 void Player::printNear() const {
-    char nSymbol ='0';
-    char sSymbol ='0';
-    char eSymbol ='0';
-    char wSymbol ='0';
-    if(getRoom()->getNorth()!=nullptr) {
-        nSymbol = getRoom()->getNorth()->getInnard()->getSymbol();
-    }
-    if(getRoom()->getEast()!=nullptr) {
-        eSymbol = getRoom()->getEast()->getInnard()->getSymbol();
-    }
-    if(getRoom()->getSouth()!=nullptr) {
-        sSymbol = getRoom()->getSouth()->getInnard()->getSymbol();
-    }
-    if(getRoom()->getWest()!=nullptr) {
-        wSymbol = getRoom()->getWest()->getInnard()->getSymbol();
-    }
-    bool empty = true;
-    if(nSymbol == '#' || sSymbol == '#' || eSymbol == '#' || wSymbol == '#') {
-        cout << "Kraken is nearby." << endl;
-        empty = false;
-    }
-    if(nSymbol == '@' || sSymbol == '@' || eSymbol == '@' || wSymbol == '@') {
-        cout << "Whirlpool is nearby." << endl;
-        empty = false;
-    }
-    if(nSymbol == '!' || sSymbol == '!' || eSymbol == '!' || wSymbol == '!') {
-        cout << "Riptide is nearby." << endl;
-        empty = false;
-    }
-    if(empty) {
-        cout << "It is dark." << endl;
-    }
+  char nSymbol = '0';
+  char sSymbol = '0';
+  char eSymbol = '0';
+  char wSymbol = '0';
+  if (getRoom()->getNorth() != nullptr) {
+    nSymbol = getRoom()->getNorth()->getInnard()->getSymbol();
+  }
+  if (getRoom()->getEast() != nullptr) {
+    eSymbol = getRoom()->getEast()->getInnard()->getSymbol();
+  }
+  if (getRoom()->getSouth() != nullptr) {
+    sSymbol = getRoom()->getSouth()->getInnard()->getSymbol();
+  }
+  if (getRoom()->getWest() != nullptr) {
+    wSymbol = getRoom()->getWest()->getInnard()->getSymbol();
+  }
+  bool empty = true;
+  if (nSymbol == '#' || sSymbol == '#' || eSymbol == '#' || wSymbol == '#') {
+    cout << "Kraken is nearby." << endl;
+    empty = false;
+  }
+  if (nSymbol == '@' || sSymbol == '@' || eSymbol == '@' || wSymbol == '@') {
+    cout << "Whirlpool is nearby." << endl;
+    empty = false;
+  }
+  if (nSymbol == '!' || sSymbol == '!' || eSymbol == '!' || wSymbol == '!') {
+    cout << "Riptide is nearby." << endl;
+    empty = false;
+  }
+  if (empty) {
+    cout << "It is dark." << endl;
+  }
 }

@@ -5,7 +5,7 @@
 #include "hazard.h"
 
 
-void Riptide::trigger(Map map, Player& player) {
+void Riptide::trigger(Map &map, Player &player) {
   Room *new_room = map.get_random_room();
   while (!(new_room->isEdge())) {
     new_room = map.get_random_room();
@@ -13,7 +13,7 @@ void Riptide::trigger(Map map, Player& player) {
   player.setRoom(new_room);
 }
 
-void Whirlpool::trigger(Map map, Player& player) {
+void Whirlpool::trigger(Map &map, Player &player) {
   Room *new_room = map.get_random_room();
   player.setRoom(new_room);
 }
