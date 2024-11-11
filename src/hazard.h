@@ -6,21 +6,23 @@
 #define HAZARD_H
 #include "innards.h"
 
-
 class Hazard : public Innards {
 public:
   Hazard(char symbol) : Innards(symbol) {}
+  Hazard(char symbol, int airLoss) : Innards(symbol) { airLoss(airLoss); }
+protected:
+  int airLoss;
 };
 
 class Riptide : public Hazard {
 public:
-  Riptide() : Hazard('!') {}
+  Riptide() : Hazard('!', 5) {}
   void trigger(Map &map, Player &player) override;
 };
 
 class Whirlpool : public Hazard {
 public:
-  Whirlpool() : Hazard('@') {}
+  Whirlpool() : Hazard('@', 10) {}
   void trigger(Map &map, Player &player) override;
 };
 

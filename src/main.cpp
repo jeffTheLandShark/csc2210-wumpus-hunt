@@ -70,9 +70,9 @@ void help() {
     cout << "Welcome to hunt the Kraken. You are a deep sea scuba diver seeking to kill the Kraken before you run out of oxygen. The sea floor is divided into 30 spaces in a 5 high 6 wide rectangle. Each space is connected to 4 others." << endl << endl;
     cout << "Hazards:" << endl;
     cout << "Whirlpool - One space has a whirlpool. If you go there, you will be whisked away to a random space and will lose 5 oxygen." << endl;
-    cout << "Riptide - Two spaces have riptides. These will drown you and you will lose." << endl << endl;
+    cout << "Riptide - Two spaces have riptides. If you go there, you will be whisked away to a random space on the edge of the map and will lose 10 oxygen." << endl << endl;
     cout << "Kraken:" << endl;
-    cout << "The Kraken is not affected by hazards. The Kraken is usually asleep. If you shoot a Harpoon and miss, he might wake up and move to an adjacent space. If you attempt to move into the Kraken's space, it eats you and you lose." << endl << endl;
+    cout << "If you attempt to move into the Kraken's space, it eats you and you lose." << endl << endl;
     cout << "You:" << endl;
     cout << "Each turn you may move or use a weapon."  << endl;
     cout << "Moving: You can move one space North, South, East, or West if there is a room in that direction." << endl;
