@@ -1,10 +1,15 @@
-//
-// Created by deald on 10/30/2024.
-//
-#include "room.h"
+/*
+ * player.cpp
+ * This file contains the implementation of the Player class.
+ */
 #include "player.h"
-#include "map.h"
+
 #include <iostream>
+
+#include "items.h"
+#include "map.h"
+#include "room.h"
+
 using namespace std;
 
 Player::Player() {
@@ -14,73 +19,59 @@ Player::Player() {
   location = nullptr;
 }
 
-int Player::getAir() const {
-  return air;
-}
+int Player::getAir() const { return air; }
 
-int Player::getNets() const {
-  return numNets;
-}
+int Player::getNets() const { return numNets; }
 
-int Player::getHarpoons() const {
-  return numHarpoons;
-}
+int Player::getHarpoons() const { return numHarpoons; }
 
-void Player::addAir(int tankAir) {
-  air += tankAir;
-}
+void Player::addAir(int tankAir) { air += tankAir; }
 
-void Player::addNet() {
-  numNets++;
-}
+void Player::addNet() { numNets++; }
 
-void Player::addHarpoon() {
-  numHarpoons++;
-}
+void Player::addHarpoon() { numHarpoons++; }
 
 void Player::setRoom(Room *room) {
   this->location = room;
   air--;
 }
 
-Room *Player::getRoom() const {
-  return location;
-}
+Room *Player::getRoom() const { return location; }
 
 void Player::playerMove(char dir) {
-  //tolower
+  // tolower
   if (location != nullptr) {
     switch (dir) {
-      case 'n':
-        if (Map::roomExists(location, dir)) {
-          setRoom(location->getNorth());
-        } else {
-          cout << "You can't move north" << endl;
-        }
-        break;
-      case 'e':
-        if (Map::roomExists(location, dir)) {
-          setRoom(location->getEast());
-        } else {
-          cout << "You can't move east" << endl;
-        }
-        break;
-      case 's':
-        if (Map::roomExists(location, dir)) {
-          setRoom(location->getSouth());
-        } else {
-          cout << "You can't move south" << endl;
-        }
-        break;
-      case 'w':
-        if (Map::roomExists(location, dir)) {
-          setRoom(location->getWest());
-        } else {
-          cout << "You can't move west" << endl;
-        }
-        break;
-      default:
-        cout << "Unknown direction" << endl;
+    case 'n':
+      if (Map::roomExists(location, dir)) {
+        setRoom(location->getNorth());
+      } else {
+        cout << "You can't move north" << endl;
+      }
+      break;
+    case 'e':
+      if (Map::roomExists(location, dir)) {
+        setRoom(location->getEast());
+      } else {
+        cout << "You can't move east" << endl;
+      }
+      break;
+    case 's':
+      if (Map::roomExists(location, dir)) {
+        setRoom(location->getSouth());
+      } else {
+        cout << "You can't move south" << endl;
+      }
+      break;
+    case 'w':
+      if (Map::roomExists(location, dir)) {
+        setRoom(location->getWest());
+      } else {
+        cout << "You can't move west" << endl;
+      }
+      break;
+    default:
+      cout << "Unknown direction" << endl;
     }
   }
 }
@@ -89,38 +80,38 @@ void Player::useItem(Map &map, char letter, char direction) {
   bool hit;
   if (Map::roomExists(location, direction)) {
     switch (letter) {
-      case 'h':
-        if (numHarpoons > 0) {
-          Harpoon harpoon;
-          hit = harpoon.use(*this, direction);
-          map.set_game_over(hit);
-          map.set_win(hit);
-          if (hit) {
-            cout << "You shot the kraken" << endl;
-          } else {
-            cout << "You missed" << endl;
-          }
-          numHarpoons--;
+    case 'h':
+      if (numHarpoons > 0) {
+        Harpoon harpoon;
+        hit = harpoon.use(*this, direction);
+        map.set_game_over(hit);
+        map.set_win(hit);
+        if (hit) {
+          cout << "You shot the kraken" << endl;
         } else {
-          cout << "Not enough harpoons" << endl;
+          cout << "You missed" << endl;
         }
-        break;
-      case 't':
-        if (numNets > 0) {
-          Net net;
-          hit = net.use(*this, direction);
-          if (hit == true) {
-            cout << "The kraken was in the " << direction << " direction" << endl;
-          } else {
-            cout << "You missed" << endl;
-          }
-          numNets--;
+        numHarpoons--;
+      } else {
+        cout << "Not enough harpoons" << endl;
+      }
+      break;
+    case 't':
+      if (numNets > 0) {
+        Net net;
+        hit = net.use(*this, direction);
+        if (hit == true) {
+          cout << "The kraken was in the " << direction << " direction" << endl;
         } else {
-          cout << "Not enough nets" << endl;
+          cout << "You missed" << endl;
         }
-        break;
-      default:
-        cout << "Unknown weapon" << endl;
+        numNets--;
+      } else {
+        cout << "Not enough nets" << endl;
+      }
+      break;
+    default:
+      cout << "Unknown weapon" << endl;
     }
   } else {
     cout << "You can't shoot in that direction" << endl;
@@ -128,12 +119,13 @@ void Player::useItem(Map &map, char letter, char direction) {
 }
 
 void Player::printNear() const {
-  //ennsures symbols are defined, and are irrelevant if they are not changed
+  // ennsures symbols are defined, and are irrelevant if they are not changed
   char nSymbol = '0';
   char sSymbol = '0';
   char eSymbol = '0';
   char wSymbol = '0';
-  //changes symbols if a room in that direction exist, prevents symbol setting from null room
+  // changes symbols if a room in that direction exist, prevents symbol setting
+  // from null room
   if (getRoom()->getNorth() != nullptr) {
     nSymbol = getRoom()->getNorth()->getInnard()->getSymbol();
   }
@@ -160,7 +152,7 @@ void Player::printNear() const {
     cout << "You feel water pulling past you." << endl;
     empty = false;
   }
-  if(empty) {
+  if (empty) {
     cout << "It is dark and wet." << endl;
   }
 }

@@ -1,20 +1,20 @@
 /*
- *
- *
+ * items.cpp
+ * @brief The implementation of the Items class
  */
-#include "room.h"
+
 #include "items.h"
-#include "player.h"
 
 #include <iostream>
 
 #include "map.h"
+#include "player.h"
+#include "room.h"
 
 void Items::trigger(Map &map, Player &player) {
   pickup(player);
   player.getRoom()->setInnard(new Innards);
 }
-
 
 void AirTank::pickup(Player &player) {
   std::cout << "You find an airtank with " << air << " oxygen." << std::endl;
@@ -27,113 +27,69 @@ void Net::pickup(Player &player) {
 }
 
 bool Net::use(Player &player, char direction) {
-  bool hit = false;
-  switch (direction) {
+  if (Map::roomExists(player.getRoom(), direction)) {
+    switch (direction) {
     case 'n': {
       Room *northRoom = player.getRoom()->getNorth();
-      //prevent out of bounds exceptions on shooting nets
-      if(northRoom == nullptr) {
-        return false;
+      if (northRoom->hasKraken()) {
+        return true;
       }
-      if(northRoom->hasKraken()) {
-        hit=true;
+      if (Map::roomExists(northRoom, 'e') &&
+          northRoom->getEast()->hasKraken()) {
+        return true;
       }
-      if(northRoom->getEast() != nullptr) {
-        if(!hit) {
-          if(northRoom->getEast()->hasKraken()) {
-            hit=true;
-          }
-        }
+      if (Map::roomExists(northRoom, 'w') &&
+          northRoom->getWest()->hasKraken()) {
+        return true;
       }
-      if(northRoom->getWest() != nullptr) {
-        if(!hit) {
-          if(northRoom->getWest()->hasKraken()) {
-            hit=true;
-          }
-        }
-      }
-      return hit;
+      return false;
     }
     case 'e': {
       Room *eastRoom = player.getRoom()->getEast();
-      //prevent out of bounds exceptions on shooting nets
-      if(eastRoom == nullptr) {
-        return false;
+      if (eastRoom->hasKraken()) {
+        return true;
       }
-      if(eastRoom->hasKraken()) {
-        hit = true;
+      if (Map::roomExists(eastRoom, 'n') && eastRoom->getNorth()->hasKraken()) {
+        return true;
       }
-
-      if(eastRoom->getNorth() != nullptr) {
-        if(!hit) {
-          if(eastRoom->getNorth()->hasKraken()) {
-            hit = true;
-          }
-        }
+      if (Map::roomExists(eastRoom, 's') && eastRoom->getSouth()->hasKraken()) {
+        return true;
       }
-      if(eastRoom->getSouth() != nullptr) {
-        if(!hit) {
-          if(eastRoom->hasKraken()) {
-            hit = true;
-          }
-        }
-      }
-      return hit;
+      return false;
     }
     case 's': {
       Room *southRoom = player.getRoom()->getSouth();
-      //prevent out of bounds exceptions on shooting nets
-      if(southRoom == nullptr) {
-        return false;
+      if (southRoom->hasKraken()) {
+        return true;
       }
-      if(southRoom->hasKraken()) {
-        hit = true;
+      if (Map::roomExists(southRoom, 'e') &&
+          southRoom->getEast()->hasKraken()) {
+        return true;
       }
-      if(southRoom->getNorth() != nullptr) {
-        if(!hit) {
-          if(southRoom->getNorth()->hasKraken()) {
-            hit = true;
-          }
-        }
+      if (Map::roomExists(southRoom, 'w') &&
+          southRoom->getWest()->hasKraken()) {
+        return true;
       }
-      if(southRoom->getSouth() != nullptr) {
-        if(!hit) {
-          if(southRoom->getSouth()->hasKraken()) {
-            hit = true;
-          }
-        }
-      }
-
-      return hit;
+      return false;
     }
     case 'w': {
       Room *westRoom = player.getRoom()->getWest();
-      //prevent out of bounds exceptions on shooting nets
-      if(westRoom == nullptr) {
-        return false;
+      if (westRoom->hasKraken()) {
+        return true;
       }
-      if(westRoom->hasKraken()) {
-        hit = true;
+      if (Map::roomExists(westRoom, 'n') && westRoom->getNorth()->hasKraken()) {
+        return true;
       }
-      if(westRoom->getNorth() != nullptr) {
-        if(!hit) {
-          if(westRoom->getNorth()->hasKraken()) {
-            hit = true;
-          }
-        }
+      if (Map::roomExists(westRoom, 's') && westRoom->getSouth()->hasKraken()) {
+        return true;
       }
-      if(westRoom->getSouth() != nullptr) {
-        if(!hit) {
-          if(westRoom->getSouth()->hasKraken()) {
-            hit=true;
-          }
-        }
-      }
-      return hit;
+      return false;
     }
     default:
       throw std::invalid_argument("Invalid direction");
+    }
   }
+  return false;
 }
 
 void Harpoon::pickup(Player &player) {
@@ -142,32 +98,22 @@ void Harpoon::pickup(Player &player) {
 }
 
 bool Harpoon::use(Player &player, char direction) {
-  switch (direction) {
+  // check if room exists before checking if Kraken is in the room
+  if (Map::roomExists(player.getRoom(), direction)) {
+    // check if Kraken is in the room
+    switch (direction) {
     case 'n':
-      //prevent out of bounds exceptions on shooting nets
-      if (player.getRoom() != nullptr && player.getRoom()->getNorth() != nullptr) {
-        return player.getRoom()->getNorth()->hasKraken();
-      }
-      return false;
+      return player.getRoom()->getNorth()->hasKraken();
     case 'e':
-      //prevent out of bounds exceptions on shooting nets
-      if (player.getRoom() != nullptr && player.getRoom()->getEast() != nullptr) {
-        return player.getRoom()->getEast()->hasKraken();
-      }
-      return false;
+      return player.getRoom()->getEast()->hasKraken();
     case 's':
-      //prevent out of bounds exceptions on shooting nets
-      if (player.getRoom() != nullptr && player.getRoom()->getSouth() != nullptr) {
-        return player.getRoom()->getSouth()->hasKraken();
-      }
-      return false;
+      return player.getRoom()->getSouth()->hasKraken();
     case 'w':
-      //prevent out of bounds exceptions on shooting nets
-      if (player.getRoom() != nullptr && player.getRoom()->getWest() != nullptr) {
-        return player.getRoom()->getWest()->hasKraken();
-      }
-      return false;
+      return player.getRoom()->getWest()->hasKraken();
     default:
       throw std::invalid_argument("Invalid direction");
+    }
+  } else {
+    return false;
   }
 }

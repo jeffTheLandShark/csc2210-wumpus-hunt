@@ -1,10 +1,13 @@
-//
-// Created by deald on 10/27/2024.
-//
-#include "map.h"
+/*
+* kraken.cpp
+* @brief The implementation of the Kraken class
+*/
+
 #include "kraken.h"
 
 #include <iostream>
+
+#include "map.h"
 
 void Kraken::trigger(Map &map, Player &player) {
 std::cout <<       "                      ___"
