@@ -8,9 +8,9 @@ Build tool: Ninja.exe
 
 g++ version: 3.29.6
 
-Steps: 
+Steps: We use Cmake to run the build using the `src/CMakeLists.txt` file
 
-Executable location:
+Executable location: `src/cmake-build-debug/Wumpus.exe`
 
 ## Changes to Game:
 
