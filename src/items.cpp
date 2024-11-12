@@ -31,6 +31,7 @@ bool Net::use(Player &player, char direction) {
   switch (direction) {
     case 'n': {
       Room *northRoom = player.getRoom()->getNorth();
+      //prevent out of bounds exceptions on shooting nets
       if(northRoom == nullptr) {
         return false;
       }
@@ -55,7 +56,7 @@ bool Net::use(Player &player, char direction) {
     }
     case 'e': {
       Room *eastRoom = player.getRoom()->getEast();
-      //exits method because it cannot be in that direction
+      //prevent out of bounds exceptions on shooting nets
       if(eastRoom == nullptr) {
         return false;
       }
@@ -81,6 +82,7 @@ bool Net::use(Player &player, char direction) {
     }
     case 's': {
       Room *southRoom = player.getRoom()->getSouth();
+      //prevent out of bounds exceptions on shooting nets
       if(southRoom == nullptr) {
         return false;
       }
@@ -106,6 +108,7 @@ bool Net::use(Player &player, char direction) {
     }
     case 'w': {
       Room *westRoom = player.getRoom()->getWest();
+      //prevent out of bounds exceptions on shooting nets
       if(westRoom == nullptr) {
         return false;
       }
@@ -141,21 +144,25 @@ void Harpoon::pickup(Player &player) {
 bool Harpoon::use(Player &player, char direction) {
   switch (direction) {
     case 'n':
+      //prevent out of bounds exceptions on shooting nets
       if (player.getRoom() != nullptr && player.getRoom()->getNorth() != nullptr) {
         return player.getRoom()->getNorth()->hasKraken();
       }
       return false;
     case 'e':
+      //prevent out of bounds exceptions on shooting nets
       if (player.getRoom() != nullptr && player.getRoom()->getEast() != nullptr) {
         return player.getRoom()->getEast()->hasKraken();
       }
       return false;
     case 's':
+      //prevent out of bounds exceptions on shooting nets
       if (player.getRoom() != nullptr && player.getRoom()->getSouth() != nullptr) {
         return player.getRoom()->getSouth()->hasKraken();
       }
       return false;
     case 'w':
+      //prevent out of bounds exceptions on shooting nets
       if (player.getRoom() != nullptr && player.getRoom()->getWest() != nullptr) {
         return player.getRoom()->getWest()->hasKraken();
       }

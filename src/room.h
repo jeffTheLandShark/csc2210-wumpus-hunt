@@ -10,6 +10,7 @@
 class Room {
 public:
   Room();
+  ~Room();
   void setNorth(Room *room);
   void setSouth(Room *room);
   void setEast(Room *room);

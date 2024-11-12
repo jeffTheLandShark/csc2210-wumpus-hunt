@@ -16,6 +16,7 @@ Map::Map(Player *player) {
     room = new Room();
     room->setInnard(new Innards());
   }
+  //directional pointer setter for rooms
   for (int i = 0; i < 30; i++) {
     if (i > 5) {
       rooms[i]->setNorth(rooms[i - 6]);
@@ -34,6 +35,7 @@ Map::Map(Player *player) {
   Room *random_room = get_random_room();
   random_room->setInnard(new Kraken());
 
+  //sets custom innards of room while that room doesn't have anything in it.
   while (random_room->getInnard()->getSymbol() != '.') {
     random_room = get_random_room();
   }

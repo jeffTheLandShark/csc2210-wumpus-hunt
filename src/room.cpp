@@ -58,10 +58,12 @@ bool Room::hasKraken() const {
   return innard->getSymbol() == '#';
 }
 
+
 void Room::display() const {
   if (innard) {
     innard->display();
   } else {
+    //incase innard was not set by mistake
     std::cout << ".";
   }
 }

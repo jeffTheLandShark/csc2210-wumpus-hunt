@@ -128,10 +128,12 @@ void Player::useItem(Map &map, char letter, char direction) {
 }
 
 void Player::printNear() const {
+  //ennsures symbols are defined, and are irrelevant if they are not changed
   char nSymbol = '0';
   char sSymbol = '0';
   char eSymbol = '0';
   char wSymbol = '0';
+  //changes symbols if a room in that direction exist, prevents symbol setting from null room
   if (getRoom()->getNorth() != nullptr) {
     nSymbol = getRoom()->getNorth()->getInnard()->getSymbol();
   }
