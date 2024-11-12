@@ -69,3 +69,7 @@ void Room::display() const {
 bool Room::isEdge() const {
   return !(north && south && east && west);
 }
+
+Room::~Room() {
+  delete innard;
+}

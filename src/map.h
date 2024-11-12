@@ -17,6 +17,8 @@ public:
   void set_game_over(bool);
   void set_win(bool);
   static bool roomExists(Room *room, char dir);
+  ~Map();
+
 private:
   Room *first_room;
   Room *rooms[30]{};

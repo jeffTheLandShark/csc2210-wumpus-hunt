@@ -145,13 +145,20 @@ void Player::printNear() const {
     wSymbol = getRoom()->getWest()->getInnard()->getSymbol();
   }
 
+  bool empty = true;
   if (nSymbol == '#' || sSymbol == '#' || eSymbol == '#' || wSymbol == '#') {
     cout << "You feel a chill and a sense of dread." << endl;
+    empty = false;
   }
   if (nSymbol == '@' || sSymbol == '@' || eSymbol == '@' || wSymbol == '@') {
     cout << "You feel water swirling nearby." << endl;
+    empty = false;
   }
   if (nSymbol == '!' || sSymbol == '!' || eSymbol == '!' || wSymbol == '!') {
     cout << "You feel water pulling past you." << endl;
+    empty = false;
+  }
+  if(empty) {
+    cout << "It is dark and wet." << endl;
   }
 }

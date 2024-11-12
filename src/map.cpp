@@ -105,7 +105,6 @@ bool Map::is_win() const {
 
 void Map::set_game_over(bool over) {
   game_over = over;
-  cout << game_over << endl;
 }
 
 void Map::set_win(bool win) {
@@ -125,5 +124,11 @@ bool Map::roomExists(Room *room, char dir) {
     default:
       cout << "Unknown direction" << endl;
       return false;
+  }
+}
+
+Map::~Map() {
+  for(const Room *room : rooms) {
+    delete room;
   }
 }

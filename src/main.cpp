@@ -15,11 +15,24 @@ void printOptions(const Player *player, const Map *map);
 int main() {
   setup();
   auto *player = new Player();
-  Map *map = new Map(player);
+  const auto map = new Map(player);
+
 
   string input;
   string weaponDir;
+
+  bool debug = false;
+  cout << "Play in debug mode? (y/n): ";
+  cin >> input;
+  if(toLowerCase(input) == "y") {
+    debug = true;
+  }
+  input = "";
+
   while (input != "q" && !map->is_over()) {
+    if(debug) {
+      map->display(player->getRoom());
+    }
     player->printNear();
     printOptions(player, map);
     cin >> input;
@@ -31,7 +44,7 @@ int main() {
       map->display(player->getRoom());
     } else if (input == "r") {
       while (weaponDir != "n" && weaponDir != "s" && weaponDir != "e" && weaponDir != "w") {
-        cout << "use harpoon in which direction? (n/s/e/w)";
+        cout << "use harpoon in which direction? (n/s/e/w): ";
         cin >> weaponDir;
         weaponDir = toLowerCase(weaponDir);
       }
@@ -39,7 +52,7 @@ int main() {
       weaponDir = "";
     } else if (input == "t") {
       while (weaponDir != "n" && weaponDir != "s" && weaponDir != "e" && weaponDir != "w") {
-        cout << "use net in which direction? (n/s/e/w)";
+        cout << "use net in which direction? (n/s/e/w): ";
         cin >> weaponDir;
         weaponDir = toLowerCase(weaponDir);
       }
@@ -51,7 +64,7 @@ int main() {
       int airRemaining = player->getAir();
       if (airRemaining > 0 && !map->is_over()) {
         cout << "You have " << airRemaining << " units of oxygen remaining" << endl;
-      } else {
+      } else if(!map->is_over()){
         cout << "You have run out of air." << endl;
         map->set_game_over(true);
         map->set_win(false);
@@ -75,10 +88,10 @@ void help() {
       << endl << endl;
   cout << "Hazards:" << endl;
   cout <<
-      "Whirlpool - One space has a whirlpool. If you go there, you will be whisked away to a random space and will lose 5 oxygen."
+      "Whirlpool - One space has a whirlpool. If you go there, you will be whisked away to a random space and will lose 11 oxygen."
       << endl;
   cout <<
-      "Riptide - Two spaces have riptides. If you go there, you will be whisked away to a random space on the edge of the map and will lose 10 oxygen."
+      "Riptide - Two spaces have riptides. If you go there, you will be whisked away to a random space on the edge of the map and will lose 6 oxygen."
       << endl << endl;
   cout << "Kraken:" << endl;
   cout << "If you attempt to move into the Kraken's space, it eats you and you lose." << endl << endl;
@@ -86,10 +99,10 @@ void help() {
   cout << "Each turn you may move or use a weapon." << endl;
   cout << "Moving: You can move one space North, South, East, or West if there is a room in that direction." << endl;
   cout <<
-      "Oxygen: Each move consumes 1 Oxygen. If you run out of Oxygen you lose. There is one Oxygen tank that you can find."
+      "Oxygen: Each move consumes 1 Oxygen. If you run out of Oxygen you lose. There is one Oxygen tank that you can find. You start with 50 Oxygen"
       << endl;
   cout <<
-      "Using Weapons: You can use the Harpoon to attack an adjacent space (you start with 2 harpoons and can find 2 more)."
+      "Using Weapons: You can use the Harpoon to attack an adjacent space (you start with 1 harpoon and can find 2 more)."
       << endl;
   cout << "If you hit the Kraken with a Harpoon, you win." << endl;
   cout <<
